@@ -1,0 +1,27 @@
+<section class="container">
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Contact No.</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <td >{{employee.name}}</td>
+                <td >{{employee.department}}</td>
+                <td >{{employee.contactNumber}}</td>
+                <td >
+                    <button type="button" (click)="editEmployee(employee)" class="btn btn-primary" value="Edit">Edit</button>
+                    <button type="button" (click)="deleteEmployee(employee._id)" class="btn btn-primary" value="Delete" style="margin-left: 10px;">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="mb-4" style="text-align: center;">
+        <a routerLink="/addEmployee" class="btn btn-primary">Add New Employee</a>
+    </div>
+</section>

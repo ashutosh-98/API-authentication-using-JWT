@@ -1,0 +1,66 @@
+<section class="container">
+    <div class="card">
+        <div class="card-header">
+            Edit Employee
+        </div>
+        <div class="card-body">
+            <form [formGroup]="employeeForm" (ngSubmit)="updateEmployee()">
+                <div class="form-group">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            Name
+                        </div>
+                        <div class="col-md-8">
+                            <input id="name" class="form-control" type="text" name="name" formControlName="name"
+                                autocomplete="off">
+                            <div *ngIf="employeeForm.get('name').errors?.required && employeeForm.get('name').touched"
+                                class="text-danger small">
+                                Name is Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            Department
+                        </div>
+                        <div class="col-md-8">
+                            <textarea id="employeeDepartment" class="form-control" name="employeeDepartment" rows="5"
+                                formControlName="department" autocomplete="off"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            Contact Number
+                        </div>
+                        <div class="col-md-8">
+                            <input id="contactNumber" class="form-control" type="text" name="contactNumber"
+                                formControlName="contactNumber" autocomplete="off">
+                            <div *ngIf="employeeForm.get('contactNumber').errors?.required && employeeForm.get('contactNumber').touched"
+                                class="text-danger small">
+                                Contact number is required.
+                            </div>
+                            <ng-template #contactNumberFormat>
+                                <div *ngIf="employeeForm.get('contactNumber').errors?.pattern && employeeForm.get('contactNumber').touched"
+                                    class="text-danger small">
+                                    Contact Number should be a number.
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="text-right">
+                    <button type="submit" class="btn btn-success" [disabled]="!employeeForm.valid">Edit</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>
